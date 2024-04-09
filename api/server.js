@@ -17,7 +17,7 @@ mongoose.set("strictQuery", true);
 
 const connect = async () => {
   try {
-    await mongoose.connect(process.env.MONGO);
+    await mongoose.connect('mongodb+srv://capstoneproj:a00039_capstone@cluster0.8qfqugs.mongodb.net/almaerid?retryWrites=true&w=majority&appName=Cluster0');
     console.log("Connected to mongoDB!");
   } catch (error) {
     console.log(error);
