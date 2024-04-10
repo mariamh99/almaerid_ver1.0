@@ -22,16 +22,16 @@ export const createMessage = async (req, res, next) => {
       { new: true }
     );
 
-    res.status(201).send(savedMessage);
+    res.status(201).json(savedMessage);
   } catch (err) {
-    next(err);
+    next(createError(500, err.message));
   }
 };
 export const getMessages = async (req, res, next) => {
   try {
     const messages = await Message.find({ chatId: req.params.id });
-    res.status(200).send(messages);
+    res.status(200).json(messages);
   } catch (err) {
-    next(err);
+    next(createError(500, err.message));
   }
 };
