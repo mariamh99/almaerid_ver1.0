@@ -10,18 +10,19 @@ function Featured() {
     navigate(`/listings?search=${input}`);
   };
   return (
-    <div className="featured">
+    <div className="featured" style={{background:"#4f5052"}}>
       <div className="container">
         <div className="left">
           <h1>
-            Find the perfect <span>freelance</span> services for your business
+            Find the perfect <span>Artist</span> services for your business
           </h1>
           <div className="search">
-            <div className="searchInput">
+            <div className="searchInput" style={{width:"100%"}}>
               <img src="./img/search.png" alt="" />
               <input
                 type="text"
-                placeholder='Try "building mobil app"'
+                style={{width:"100%"}}
+                placeholder='Try "Design a logo"'
                 onChange={(e) => setInput(e.target.value)}
               />
             </div>
@@ -29,10 +30,10 @@ function Featured() {
           </div>
           <div className="popular">
             <span>Popular:</span>
-            <button>Web Design</button>
-            <button>WordPress</button>
-            <button>Logo Design</button>
-            <button>AI Services</button>
+            <button>Video Editing</button>
+            <button>Drawing & Illustration</button>
+            <button>Photography</button>
+            <button>3D Modeling & Rendering</button>
           </div>
         </div>
         <div className="right">

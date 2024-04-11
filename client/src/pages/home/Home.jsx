@@ -6,8 +6,10 @@ import Slide from "../../components/slide/Slide";
 import CatCard from "../../components/catCard/CatCard";
 import ProjectCard from "../../components/projectCard/ProjectCard";
 import { cards, projects } from "../../data";
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+  const navigate=useNavigate();
   return (
     <div className="home">
       <Featured />
@@ -63,40 +65,51 @@ function Home() {
         <div className="container">
           <h1>Explore the marketplace</h1>
           <div className="items">
-            <div className="item">
+            <div className="item" onClick={()=>{
+              navigate("/listings?cat=graphics")
+            }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/graphics-design.d32a2f8.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Graphics & Design</span>
+              <span>Graphics Design</span>
             </div>
-            <div className="item">
+            <div className="item"  onClick={()=>{
+              navigate("/listings?cat=digital")
+            }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/online-marketing.74e221b.svg"
                 alt=""
               />
               <div className="line"></div>
 
-              <span>Digital Marketing</span>
+              <span>Digital Painting</span>
             </div>
-            <div className="item">
+            <div className="item" onClick={()=>{
+              navigate("/listings?cat=print")
+            }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/writing-translation.32ebe2e.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Writing & Translation</span>
+              <span>Print Design</span>
             </div>
-            <div className="item">
+            <div className="item" onClick={()=>{
+              navigate("/listings?cat=video")
+            }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/video-animation.f0d9d71.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Video & Animation</span>
+              <span>Video Editing
+</span>
             </div>
-            <div className="item">
+            <div className="item" onClick={()=>{
+              navigate("/listings?cat=music")
+            }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/music-audio.320af20.svg"
                 alt=""
@@ -104,39 +117,49 @@ function Home() {
               <div className="line"></div>
               <span>Music & Audio</span>
             </div>
-            <div className="item">
+            <div className="item" onClick={()=>{
+              navigate("/listings?cat=motion")
+            }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/programming.9362366.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Programming & Tech</span>
+              <span>Motion Graphics</span>
             </div>
-            <div className="item">
+            <div className="item" onClick={()=>{
+              navigate("/listings?cat=typography")
+            }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/business.bbdf319.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Business</span>
+              <span>Typography Design</span>
             </div>
-            <div className="item">
+            <div className="item" onClick={()=>{
+              navigate("/listings?cat=3d")
+            }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/lifestyle.745b575.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Lifestyle</span>
+              <span>3D Modeling & Rendering</span>
             </div>
-            <div className="item">
+            <div className="item" onClick={()=>{
+              navigate("/listings?cat=drawing")
+            }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/data.718910f.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Data</span>
+              <span>Drawing & Illustration</span>
             </div>
-            <div className="item">
+            <div className="item" onClick={()=>{
+              navigate("/listings?cat=photography")
+            }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/photography.01cf943.svg"
                 alt=""
@@ -151,7 +174,7 @@ function Home() {
         <div className="container">
           <div className="item">
             <h1>
-              fiverr <i>business</i>
+              Al Maerid <i>business</i>
             </h1>
             <h1>
               A business solution designed for <i>teams</i>
@@ -174,11 +197,11 @@ function Home() {
               <img src="./img/check.png" alt="" />
               Manage teamwork and boost productivity with one powerful workspace
             </div>
-            <button>Explore Fiverr Business</button>
+            <button>Explore Al Maerid Business</button>
           </div>
           <div className="item">
             <img
-              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_870,dpr_2.0/v1/attachments/generic_asset/asset/d9c17ceebda44764b591a8074a898e63-1599597624768/business-desktop-870-x2.png"
+              src="https://Al Maerid-res.cloudinary.com/q_auto,f_auto,w_870,dpr_2.0/v1/attachments/generic_asset/asset/d9c17ceebda44764b591a8074a898e63-1599597624768/business-desktop-870-x2.png"
               alt=""
             />
           </div>

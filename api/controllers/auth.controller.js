@@ -14,7 +14,7 @@ export const register = async (req, res, next) => {
     await newUser.save();
     res.status(201).send("User has been created.");
   } catch (err) {
-    next(err);
+    res.status(500).json({message:"Server error"});
   }
 };
 export const login = async (req, res, next) => {
@@ -43,7 +43,7 @@ export const login = async (req, res, next) => {
       .status(200)
       .send(info);
   } catch (err) {
-    next(err);
+    res.status(500).json({message:"Server error"});
   }
 };
 

@@ -3,17 +3,9 @@ import Order from "../models/order.model.js";
 import Listing from "../models/listing.model.js";
 import Stripe from "stripe";
 export const intent = async (req, res, next) => {
-  const stripe = new Stripe(process.env.STRIPE);
 
   const listing = await Listing.findById(req.params.id);
 
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: listing.price * 100,
-    currency: "usd",
-    automatic_payment_methods: {
-      enabled: true,
-    },
-  });
 
   const newOrder = new Order({
     listingId: listing._id,
@@ -22,21 +14,23 @@ export const intent = async (req, res, next) => {
     buyerId: req.userId,
     sellerId: listing.userId,
     price: listing.price,
-    payment_intent: paymentIntent.id,
+    payment_intent: req.body.clientSecret,
   });
 
   await newOrder.save();
 
   res.status(200).send({
-    clientSecret: paymentIntent.client_secret,
+    clientSecret: req.body.clientSecret,
   });
 };
 
 export const getOrders = async (req, res, next) => {
   try {
+    console.log("get orders")
+    console.log(req.userId)
     const orders = await Order.find({
       ...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
-      isCompleted: true,
+      isCompleted: false,
     });
 
     res.status(200).send(orders);

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #013914;
+    background-color:#4f5052;
     color: white;
     position: sticky;
     top: 0;
@@ -13,10 +13,10 @@
       background-color: white;
       color: black;
   
-      button {
+      button { border-radius:5px;
         background-color: white !important;
-        color: #1dbf73 !important;
-        border: 1px solid #1dbf73 !important;
+        color: #282728 !important;
+        border: 1px solid #282728 !important;
       }
     }
   
@@ -36,7 +36,7 @@
   
         .dot {
           font-weight: bold;
-          color: #1dbf73;
+          color: #282728;
         }
       }
       .links {
@@ -82,7 +82,7 @@
           }
         }
   
-        button {
+        button { border-radius:5px;
           color: white;
           padding: 10px 20px;
           border-radius: 5px;
@@ -91,8 +91,8 @@
           cursor: pointer;
   
           &:hover {
-            background-color: #1dbf73;
-            border-color: #1dbf73;
+            background-color: #282728;
+            border-color: #282728;
           }
         }
       }

@@ -5,11 +5,16 @@ export const createListing = async (req, res, next) => {
   if (!req.isSeller)
     return next(createError(403, "Only sellers can create a listing!"));
 
+  const cover = req.file;
+  if (!cover) {
+    return res.status(400).json({ message: "No cover image uploaded!" });
+  }
+
   const newListing = new Listing({
     userId: req.userId,
     ...req.body,
+    cover: cover.path,
   });
-
   try {
     const savedListing = await newListing.save();
     res.status(201).json(savedListing);

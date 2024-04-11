@@ -15,7 +15,7 @@ const ListingCard = ({ item }) => {
   return (
     <Link to={`/listing/${item._id}`} className="link">
       <div className="listingCard">
-        <img src={item.cover} alt="" />
+        <img src={`http://localhost:8800/${item.cover}`} alt="" />
         <div className="info">
           {isLoading ? (
             "loading"
@@ -23,7 +23,7 @@ const ListingCard = ({ item }) => {
             "Something went wrong!"
           ) : (
             <div className="user">
-              <img src={data.img || "/img/noavatar.jpg"} alt="" />
+              <img src={data.img || "./img/noavatar.png"} alt="" />
               <span>{data.username}</span>
             </div>
           )}

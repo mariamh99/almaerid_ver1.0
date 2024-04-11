@@ -58,10 +58,26 @@ const Add = () => {
       queryClient.invalidateQueries(["myListings"]);
     },
   });
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData=new FormData();
+    for (const key in state) {
+      if (state.hasOwnProperty(key)) {
+          const value = state[key];
+          formData.append(key, value);
+      }
+  }
+  formData.append("file",singleFile)
+console.log(singleFile)
+    formData.append("files", files)
+    console.log(files)
+
+    
+    newRequest.post("/listings",formData).then((res)=>{
+      navigate("/mylistings")
+    });
     mutation.mutate(state);
+    
     // navigate("/mylistings")
   };
 
@@ -80,10 +96,17 @@ const Add = () => {
             />
             <label htmlFor="">Category</label>
             <select name="cat" id="cat" onChange={handleChange}>
-              <option value="design">Design</option>
-              <option value="web">Web Development</option>
-              <option value="animation">Animation</option>
-              <option value="music">Music</option>
+              <option value="graphics">Graphics & Design</option>
+              <option value="video">Video & Animation</option>
+              <option value="drawing">Drawing & Illustration</option>
+              <option value="digital">Digital Painting
+</option>
+              <option value="photography">Photography</option>
+              <option value="print">Print Design</option>
+              <option value="typography">Typography Design</option>
+              <option value="motion">Motion Graphics</option>
+              <option value="3D">3D Modeling & Rendering</option>
+
             </select>
             <div className="images">
               <div className="imagesInputs">
@@ -96,12 +119,13 @@ const Add = () => {
                 <input
                   type="file"
                   multiple
-                  onChange={(e) => setFiles(e.target.files)}
+                  onChange={(e) => {
+                    const filesArray = Array.from(e.target.files); // Convert FileList to array
+                    setFiles(filesArray); // Update state with array of files
+                  }}
                 />
               </div>
-              <button onClick={handleUpload}>
-                {uploading ? "uploading" : "Upload"}
-              </button>
+              
             </div>
             <label htmlFor="">Description</label>
             <textarea

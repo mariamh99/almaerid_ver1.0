@@ -6,7 +6,7 @@
       padding: 100px 0px;
   
       &.dark {
-        background-color: #0d084d;
+        background-color: #4f5052;
   
         h1 {
           color: white !important;
@@ -27,8 +27,8 @@
           font-size: 14px !important;
         }
   
-        button {
-          background-color: #1dbf73;
+        button { border-radius:5px;
+          background-color: #282728;
           border: none;
           color: white;
           padding: 10px 20px;
@@ -146,7 +146,7 @@
             &:hover{
               .line{
                 width: 80px;
-                background-color: #1dbf73;
+                background-color: #282728;
               }
             }
           }

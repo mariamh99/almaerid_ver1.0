@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 import "./Message.scss";
@@ -35,12 +35,19 @@ const Message = () => {
     });
     e.target[0].value = "";
   };
+  const [currentChat,setCurrentChat] = useState();
+  useEffect(()=>{
+    newRequest.get(`/chats/single/${id}`).then((res)=>{
+      setCurrentChat(res.data)
+      console.log(res.data)
+    })
+  },[])
 
   return (
     <div className="message">
       <div className="container">
         <span className="breadcrumbs">
-          <Link to="/messages">Messages</Link> {'>'} John Doe {'>'}
+          <Link to="/messages">Messages</Link> {'>'} {currentChat && currentUser.isSeller ? currentChat &&currentChat.buyerName: currentChat &&currentChat.sellerName} {'>'}
         </span>
         {isLoading ? (
           "loading"
@@ -51,7 +58,7 @@ const Message = () => {
             {data.map((m) => (
               <div className={m.userId === currentUser._id ? "owner item" : "item"} key={m._id}>
                 <img
-                  src="https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                  src={m.userId===currentUser._id?"https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=1600":"../img/noavatar.png"}
                   alt=""
                 />
                 <p>{m.desc}</p>

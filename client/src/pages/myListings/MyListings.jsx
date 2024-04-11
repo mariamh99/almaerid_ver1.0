@@ -13,7 +13,7 @@ function MyListings() {
   const { isLoading, error, data } = useQuery({
     queryKey: ["myListings"],
     queryFn: () =>
-      newRequest.get(`/listings?userId=${currentUser.id}`).then((res) => {
+      newRequest.get(`/listings?userId=${currentUser._id}`).then((res) => {
         return res.data;
       }),
   });
@@ -58,7 +58,7 @@ function MyListings() {
             {data.map((listing) => (
               <tr key={listing._id}>
                 <td>
-                  <img className="image" src={listing.cover} alt="" />
+                  <img className="image" src={`http://localhost:8800/${listing.cover}`} alt="" />
                 </td>
                 <td>{listing.title}</td>
                 <td>{listing.price}</td>

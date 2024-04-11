@@ -12,9 +12,17 @@ const ChatSchema = new Schema(
       type: String,
       required: true,
     },
+    sellerName:{
+      type:String,
+      required:true,
+    },
     buyerId: {
       type: String,
       required: true,
+    },
+    buyerName:{
+      type:String,
+      required:true,
     },
     readBySeller: {
       type: Boolean,

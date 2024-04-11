@@ -117,7 +117,7 @@
                 }
               }
   
-              button {
+              button { border-radius:5px;
                 background-color: white;
                 border-radius: 5px;
                 border: 1px solid gray;
@@ -225,8 +225,8 @@
           }
         }
   
-        button{
-          background-color: #1dbf73;
+        button { border-radius:5px;
+          background-color: #282728;
           padding: 10px;
           color: white;
           font-weight: 500;

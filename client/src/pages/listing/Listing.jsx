@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./Listing.scss";
 import { Slider } from "infinite-react-carousel/lib";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import Reviews from "../../components/reviews/Reviews";
-
+import getCurrentUser from "../../utils/getCurrentUser";
+import {useNavigate} from "react-router-dom"
 function Listing() {
   const { id } = useParams();
-
+  const currentUser = getCurrentUser();
+  const [checkout, setCheckout] = useState(true);
+const navigate=useNavigate();
   const { isLoading, error, data } = useQuery({
     queryKey: ["listing"],
     queryFn: () =>
@@ -32,6 +35,55 @@ function Listing() {
     enabled: !!userId,
   });
 
+  const handleContactMeButton = (toParam, sellerNameParam) => {
+    newRequest
+      .post("/chats", {
+        isSeller: currentUser.isSeller,
+        to: toParam,
+        buyerName: currentUser.username,
+      })
+      .then((res) => {
+        navigate(`/messages`);
+      });
+  };
+  const paypal = useRef();
+
+  const handleCheckoutButton=(listingId)=>{
+    setCheckout(false)
+    window.paypal
+      .Buttons({
+        createOrder: (data, actions, err) => {
+          return actions.order.create({
+            intent: "CAPTURE",
+            purchase_units: [
+              {
+                description: "Cool looking table",
+                amount: {
+                  currency_code: "USD",
+                  value: 650.0,
+                },
+              },
+            ],
+          });
+        },
+        onApprove: async (data, actions) => {
+          const order = await actions.order.capture();
+          console.log(order)
+          newRequest.post(`/orders/create-payment-intent/${listingId}`,{
+            clientSecret:order.id
+          }).then((res)=>{
+            navigate("/orders")
+          }).catch((err)=>{
+            console.log(err)
+          })
+        },
+        onError: (err) => {
+          console.log(err);
+        },
+      })
+      .render(paypal.current);
+  }
+
   return (
     <div className="listing">
       {isLoading ? (
@@ -42,7 +94,7 @@ function Listing() {
         <div className="container">
           <div className="left">
             <span className="breadcrumbs">
-              Fiverr {">"} Graphics & Design {">"}
+              Al Maerid {">"} {data.cat} {">"}
             </span>
             <h1>{data.title}</h1>
             {isLoadingUser ? (
@@ -53,7 +105,7 @@ function Listing() {
               <div className="user">
                 <img
                   className="pp"
-                  src={dataUser.img || "/img/noavatar.jpg"}
+                  src={dataUser.img || "../img/noavatar.png"}
                   alt=""
                 />
                 <span>{dataUser.username}</span>
@@ -70,9 +122,7 @@ function Listing() {
               </div>
             )}
             <Slider slidesToShow={1} arrowsScroll={1} className="slider">
-              {data.images.map((img) => (
-                <img key={img} src={img} alt="" />
-              ))}
+              <img src={`http://localhost:8800/${data.cover}`} alt="" />
             </Slider>
             <h2>About This Listing</h2>
             <p>{data.desc}</p>
@@ -84,7 +134,7 @@ function Listing() {
               <div className="seller">
                 <h2>About The Seller</h2>
                 <div className="user">
-                  <img src={dataUser.img || "/img/noavatar.jpg"} alt="" />
+                  <img src={dataUser.img || "../img/noavatar.png"} alt="" />
                   <div className="info">
                     <span>{dataUser.username}</span>
                     {!isNaN(data.totalStars / data.starNumber) && (
@@ -99,7 +149,13 @@ function Listing() {
                         </span>
                       </div>
                     )}
-                    <button>Contact Me</button>
+                    <button
+                      onClick={() => {
+                        handleContactMeButton(data.userId);
+                      }}
+                    >
+                      Contact Me
+                    </button>
                   </div>
                 </div>
                 <div className="box">
@@ -156,9 +212,10 @@ function Listing() {
                 </div>
               ))}
             </div>
-            <Link to={`/pay/${id}`}>
-            <button>Continue</button>
-            </Link>
+{checkout && <button onClick={()=>{
+  handleCheckoutButton(data._id)
+}}>Continue</button>}
+            <div ref={paypal} id="paypal"></div>
           </div>
         </div>
       )}

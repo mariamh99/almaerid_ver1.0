@@ -21,13 +21,13 @@
           padding: 20px;
           align-self: flex-end;
         }
-        button {
+        button { border-radius:5px;
           align-self: flex-end;
           width: 100px;
           border: none;
           padding: 10px;
           color: white;
-          background-color: #1dbf73;
+          background-color: #282728;
           cursor: pointer;
         }
       }

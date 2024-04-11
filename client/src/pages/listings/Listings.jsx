@@ -11,6 +11,7 @@ function Listings() {
   const minRef = useRef();
   const maxRef = useRef();
 
+
   const { search } = useLocation();
 
   const { isLoading, error, data, refetch } = useQuery({
@@ -34,7 +35,7 @@ function Listings() {
 
   useEffect(() => {
     refetch();
-  }, [sort]);
+  }, [sort,search]);
 
   const apply = () => {
     refetch();
@@ -43,8 +44,8 @@ function Listings() {
   return (
     <div className="listings">
       <div className="container">
-        <span className="breadcrumbs">Liverr {'>'} Graphics & Design {'>'}</span>
-        <h1>AI Artists</h1>
+        <span className="breadcrumbs">Liverr {'>'} {search.split("=")[1]} {'>'}</span>
+        <h1>{search.split("=")[1]} Artists</h1>
         <p>
           Explore the boundaries of art and technology with Liverr's AI artists
         </p>

@@ -52,11 +52,11 @@
             }
           }
   
-          button {
+          button { border-radius:5px;
             width: 120px;
             height: 50px;
             border: none;
-            background-color: #1dbf73;
+            background-color: #282728;
             color: white;
             align-self: flex-end;
             cursor: pointer;
@@ -72,7 +72,7 @@
             width: max-content;
           }
   
-          button {
+          button { border-radius:5px;
             width: max-content;
             color: white;
             border: 1px solid white;
@@ -80,6 +80,7 @@
             border-radius: 20px;
             background-color: transparent;
             font-size: 14px;
+            cursor: pointer;
           }
         }
       }

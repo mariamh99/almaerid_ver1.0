@@ -4,3 +4,5 @@
 .DS_Store
 /api/.DS_Store
 /client/.DS_Store
+
+/api/uploads
