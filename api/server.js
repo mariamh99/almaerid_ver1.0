@@ -10,11 +10,10 @@ import reviewRoute from "./routes/review.route.js";
 import authRoute from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { MongoClient, ServerApiVersion } from 'mongodb';
 import path from "path"
 
 const app = express();
-app.use(cors({ origin: "http://localhost:5174", credentials: true }));
+app.use(cors({ origin: "https://almaerid.netlify.app", credentials: true }));
 app.use(express.urlencoded({ extended: true }));
 
 dotenv.config();
