@@ -58,7 +58,7 @@ function MyListings() {
             {data.map((listing) => (
               <tr key={listing._id}>
                 <td>
-                  <img className="image" src={`http://localhost:8800/${listing.cover}`} alt="" />
+                  <img className="image" src={`${import.meta.env.VITE_BACKEND}/${listing.cover}`} alt="" />
                 </td>
                 <td>{listing.title}</td>
                 <td>{listing.price}</td>

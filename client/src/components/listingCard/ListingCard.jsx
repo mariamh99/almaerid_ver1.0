@@ -15,7 +15,7 @@ const ListingCard = ({ item }) => {
   return (
     <Link to={`/listing/${item._id}`} className="link">
       <div className="listingCard">
-        <img src={`http://localhost:8800/${item.cover}`} alt="" />
+        <img src={`${import.meta.env.VITE_BACKEND}/${item.cover}`} alt="" />
         <div className="info">
           {isLoading ? (
             "loading"

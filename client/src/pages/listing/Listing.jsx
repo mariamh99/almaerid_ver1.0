@@ -121,7 +121,7 @@ const navigate=useNavigate();
               </div>
             )}
             <div className="slider">
-              <img src={`http://localhost:8800/${data.cover}`} alt="" />
+              <img src={`${import.meta.env.VITE_BACKEND}/${data.cover}`} alt="" />
             </div>
             <h2>About This Listing</h2>
             <p>{data.desc}</p>
