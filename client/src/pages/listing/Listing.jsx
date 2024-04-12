@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./Listing.scss";
-import { Slider } from "infinite-react-carousel/lib";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
@@ -121,9 +120,9 @@ const navigate=useNavigate();
                 )}
               </div>
             )}
-            <Slider slidesToShow={1} arrowsScroll={1} className="slider">
+            <div className="slider">
               <img src={`http://localhost:8800/${data.cover}`} alt="" />
-            </Slider>
+            </div>
             <h2>About This Listing</h2>
             <p>{data.desc}</p>
             {isLoadingUser ? (
