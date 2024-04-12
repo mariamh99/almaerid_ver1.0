@@ -4,5 +4,6 @@
 .DS_Store
 /api/.DS_Store
 /client/.DS_Store
+/client/dist
 
 /api/uploads
