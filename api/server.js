@@ -11,12 +11,13 @@ import authRoute from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import path from "path"
+dotenv.config();
 
 const app = express();
-app.use(cors({ origin: "https://almaerid.netlify.app", credentials: true }));
+console.log(process.env.CORS_URL)
+app.use(cors({ origin: process.env.CORS_URL, credentials: true }));
 app.use(express.urlencoded({ extended: true }));
 
-dotenv.config();
 mongoose.connect(process.env.MONGO);
 const _dirname = path.dirname("")
 const buildPath = path.join(_dirname  , "../client/build");

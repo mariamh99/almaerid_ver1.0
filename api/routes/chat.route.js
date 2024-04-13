@@ -5,12 +5,13 @@ import {
   getSingleChat,
   updateChat,
 } from "../controllers/chat.controller.js";
+import { verifyToken } from "../middleware/jwt.js";
 
 const router = express.Router();
 
-router.get("/", getChats);
-router.post("/", createChat);
-router.get("/single/:id", getSingleChat);
-router.put("/:id", updateChat);
+router.get("/", verifyToken, getChats);
+router.post("/", verifyToken, createChat);
+router.get("/single/:id", verifyToken, getSingleChat);
+router.put("/:id", verifyToken, updateChat);
 
 export default router;
