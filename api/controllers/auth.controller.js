@@ -37,16 +37,11 @@ export const login = async (req, res, next) => {
 
     const { password, ...info } = user._doc;
     res
-  .cookie("accessToken", token, {
-    httpOnly: true,
-    maxAge: 60 * 60 * 1000, // Fixed a typo here, "magAge" to "maxAge"
-    sameSite: 'None',
-    secure: true,
-    domain: 'almaerid.netlify.app'
-  })
-  .status(200)
-  .send(info);
-
+      .cookie("accessToken", token, {
+        httpOnly: true,
+      })
+      .status(200)
+      .send(info);
   } catch (err) {
     res.status(500).json({message:"Server error"});
   }

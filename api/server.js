@@ -10,22 +10,30 @@ import reviewRoute from "./routes/review.route.js";
 import authRoute from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import path from "path"
+import path from "path";
+import bodyParser from "body-parser";
+import { fileURLToPath } from "url"; // Import fileURLToPath function
 dotenv.config();
 
 const app = express();
-console.log(process.env.CORS_URL)
 app.use(cors({ origin:[
   "http://localhost:5174",
   "https://almaerid.netlify.app"
 ], credentials: true }));
+
 app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(process.env.MONGO);
-const _dirname = path.dirname("")
-const buildPath = path.join(_dirname  , "../client/build");
 
-app.use(express.static(buildPath))
+app.use(bodyParser.json());
+
+// Resolve directory path using import.meta.url
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const buildPath = path.join(__dirname, "../client/dist");
+
+app.use(express.static(buildPath));
+
 app.use('/uploads', express.static('uploads'));
 const db = mongoose.connection;
 db.on('error', (error) => {
@@ -46,10 +54,20 @@ app.use("/api/chats", chatRoute);
 app.use("/api/messages", messageRoute);
 app.use("/api/reviews", reviewRoute);
 
+app.get("/*", function(req, res){
+  res.sendFile(
+    path.join(__dirname, "../client/dist/index.html"),
+    function (err) {
+      if (err) {
+        console.log(err);
+        res.status(500).send(err);
+      }
+    }
+  );
+});
 
 const server = app.listen(process.env.PORT, () => {
   console.log(`server started on port ${process.env.PORT}`);
-})
-
+});
 
 export default app;
