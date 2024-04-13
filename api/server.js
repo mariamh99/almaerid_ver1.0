@@ -17,7 +17,7 @@ const app = express();
 console.log(process.env.CORS_URL)
 app.use(cors({ origin:[
   "http://localhost:5174",
-  "https://almaerid-ver1-0.onrender.com"
+  "https://almaerid.netlify.app"
 ], credentials: true }));
 app.use(express.urlencoded({ extended: true }));
 
