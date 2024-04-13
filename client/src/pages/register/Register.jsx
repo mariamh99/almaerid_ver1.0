@@ -6,15 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [file, setFile] = useState(null);
-  const [user, setUser] = useState({
-    username: "",
-    email: "",
-    password: "",
-    img: "",
-    country: "",
-    isSeller: false,
-    desc: "",
-  });
+ 
 
   const navigate = useNavigate();
 
@@ -29,20 +21,38 @@ function Register() {
       return { ...prev, isSeller: e.target.checked };
     });
   };
+
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+    img: "",
+    country: "",
+    isSeller: false,
+    desc: "",
+  });
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const url = await upload(file);
     try {
-      await newRequest.post("/auth/register", {
-        ...user,
-        img: url,
-      });
+      const formData=new FormData();
+      formData.append("username",user.username)
+      formData.append("email",user.email)
+      formData.append("password",user.password)
+      formData.append("country",user.country)
+      formData.append("isSeller",user.isSeller)
+      formData.append("desc",user.desc)
+      formData.append("file",file)
+
+      await newRequest.post("/auth/register",formData);
       navigate("/")
     } catch (err) {
-      console.log(err);
+      console.log(err)
+      setError(err.response.data.message)
     }
   };
+
+  const [error,setError]=useState();
   return (
     <div className="register">
       <form onSubmit={handleSubmit}>
@@ -73,6 +83,9 @@ function Register() {
             placeholder="Usa"
             onChange={handleChange}
           />
+          {
+            error&& <span style={{color:"red"}}>{error}</span>
+          }
           <button type="submit">Register</button>
         </div>
         <div className="right">

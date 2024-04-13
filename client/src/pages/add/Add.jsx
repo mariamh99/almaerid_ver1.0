@@ -68,9 +68,6 @@ const Add = () => {
       }
   }
   formData.append("file",singleFile)
-console.log(singleFile)
-    formData.append("files", files)
-    console.log(files)
 
     
     newRequest.post("/listings",formData).then((res)=>{

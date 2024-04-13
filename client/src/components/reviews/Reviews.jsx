@@ -3,8 +3,9 @@ import React from "react";
 import newRequest from "../../utils/newRequest";
 import Review from "../review/Review";
 import "./Reviews.scss";
+import getCurrentUser from "../../utils/getCurrentUser";
 const Reviews = ({ listingId }) => {
-
+const user=getCurrentUser();
   const queryClient = useQueryClient()
   const { isLoading, error, data } = useQuery({
     queryKey: ["reviews"],
@@ -40,7 +41,7 @@ const Reviews = ({ listingId }) => {
         : data.map((review) => <Review key={review._id} review={review} />)}
       <div className="add">
         <h3>Add a review</h3>
-        <form action="" className="addForm" onSubmit={handleSubmit}>
+        {user._id && !user.isSeller ? (<form action="" className="addForm" onSubmit={handleSubmit}>
           <input type="text" placeholder="write your opinion" />
           <select name="" id="">
             <option value={1}>1</option>
@@ -50,7 +51,8 @@ const Reviews = ({ listingId }) => {
             <option value={5}>5</option>
           </select>
           <button>Send</button>
-        </form>
+        </form>):<span>Login as a Buyer in order to add review</span>}
+        
       </div>
     </div>
   );

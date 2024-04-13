@@ -17,6 +17,7 @@ const Orders = () => {
   });
 
   const handleContact = async (order) => {
+    console.log("adzazd")
     const sellerId = order.sellerId;
     const buyerId = order.buyerId;
     const id = sellerId + buyerId;
@@ -26,8 +27,11 @@ const Orders = () => {
       navigate(`/message/${res.data.id}`);
     } catch (err) {
       if (err.response.status === 404) {
-        const res = await newRequest.post(`/chats/`, {
+        const res = await newRequest.post(`/chats`, {
           to: currentUser.seller ? buyerId : sellerId,
+          buyerName:currentUser.username,
+          sellerName:order.sellerId,
+          isSeller:currentUser.isSeller
         });
         navigate(`/message/${res.data.id}`);
       }

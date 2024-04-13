@@ -14,7 +14,7 @@ function Featured() {
       <div className="container">
         <div className="left">
           <h1>
-            Find the perfect <span>Artist</span> services for your business
+            Find the perfect <span>Digital Art</span> services for your business
           </h1>
           <div className="search">
             <div className="searchInput" style={{width:"100%"}}>

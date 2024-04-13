@@ -6,14 +6,28 @@ import jwt from "jsonwebtoken";
 export const register = async (req, res, next) => {
   try {
     const hash = bcrypt.hashSync(req.body.password, 5);
+    const file=req.file;
+if(!file){
+  return res.status(400).json({message:"Need to put image"});
+
+}
+
+    const oldUser=await User.findOne({email:req.body.email})
+
+    if(oldUser){
+      return res.status(400).json({message:"Email already exists!"});
+    }
+
     const newUser = new User({
       ...req.body,
       password: hash,
+      img:file.path
     });
 
     await newUser.save();
     res.status(201).send("User has been created.");
   } catch (err) {
+    console.log(err)
     res.status(500).json({message:"Server error"});
   }
 };

@@ -47,7 +47,7 @@ const navigate=useNavigate();
   };
   const paypal = useRef();
 
-  const handleCheckoutButton=(listingId)=>{
+  const handleCheckoutButton=(listingId,price)=>{
     setCheckout(false)
     window.paypal
       .Buttons({
@@ -59,7 +59,7 @@ const navigate=useNavigate();
                 description: "Cool looking table",
                 amount: {
                   currency_code: "USD",
-                  value: 650.0,
+                  value: price,
                 },
               },
             ],
@@ -104,7 +104,7 @@ const navigate=useNavigate();
               <div className="user">
                 <img
                   className="pp"
-                  src={dataUser.img || "../img/noavatar.png"}
+                  src={dataUser.img ?`${import.meta.env.VITE_BACKEND}/${dataUser.img}`: "../img/noavatar.png"}
                   alt=""
                 />
                 <span>{dataUser.username}</span>
@@ -133,7 +133,7 @@ const navigate=useNavigate();
               <div className="seller">
                 <h2>About The Seller</h2>
                 <div className="user">
-                  <img src={dataUser.img || "../img/noavatar.png"} alt="" />
+                  <img src={dataUser.img ?`${import.meta.env.VITE_BACKEND}/${dataUser.img}`: "../img/noavatar.png"} alt="" />
                   <div className="info">
                     <span>{dataUser.username}</span>
                     {!isNaN(data.totalStars / data.starNumber) && (
@@ -212,7 +212,7 @@ const navigate=useNavigate();
               ))}
             </div>
 {checkout && <button onClick={()=>{
-  handleCheckoutButton(data._id)
+  handleCheckoutButton(data._id,data.price)
 }}>Continue</button>}
             <div ref={paypal} id="paypal"></div>
           </div>

@@ -23,7 +23,7 @@ const ListingCard = ({ item }) => {
             "Something went wrong!"
           ) : (
             <div className="user">
-              <img src={data.img || "./img/noavatar.png"} alt="" />
+              <img src={data.img ?`${import.meta.env.VITE_BACKEND}/${data.img}`:"./img/noavatar.png"} alt="" />
               <span>{data.username}</span>
             </div>
           )}

@@ -47,9 +47,7 @@ function Listings() {
       <div className="container">
         <span className="breadcrumbs">Al Maerid {'>'} {search.split("=")[1].replaceAll("%20"," ")} {'>'}</span>
         <h1>{search.split("=")[1].replaceAll("%20"," ")} Artists</h1>
-        <p>
-          Explore the boundaries of art and technology with Al Maerid's AI artists
-        </p>
+
         <div className="menu">
           <div className="left">
             <span>Budget</span>
