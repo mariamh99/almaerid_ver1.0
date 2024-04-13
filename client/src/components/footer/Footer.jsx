@@ -11,37 +11,37 @@ function Footer() {
           <div className="item">
             <h2>Categories</h2>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=graphic");
-            }}>Graphic Design            </span>
+              navigate("/listings?cat=Graphics and Design");
+            }}>Graphic & Design            </span>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=video");
-            }}>Video Editing
+              navigate("/listings?cat=Video and Animation");
+            }}>Video & Animation
             </span>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=drawing");
+              navigate("/listings?cat=Drawing and Illustration");
             }}>Drawing & Illustration
             </span>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=digital");
+              navigate("/listings?cat=Digital Painting");
             }}>Digital Painting
             </span>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=photography");
+              navigate("/listings?cat=Photography");
             }}>Photography</span>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=print");
+              navigate("/listings?cat=Print Design");
             }}>Print Design
             </span>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=typography");
+              navigate("/listings?cat=Typography Design");
             }}>Typography Design
             </span>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=motion");
+              navigate("/listings?cat=Motion Graphics");
             }}>Motion Graphics
             </span>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=3d");
+              navigate("/listings?cat=3D Modeling and Rendering");
             }}>3D Modeling & Rendering</span>
 
 

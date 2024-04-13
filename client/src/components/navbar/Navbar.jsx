@@ -44,10 +44,7 @@ function Navbar() {
           <span className="dot">.</span>
         </div>
         <div className="links">
-          <span>Al Maerid Business</span>
-          <span>Explore</span>
-          <span>English</span>
-          {!currentUser?.isSeller && <span>Become a Seller</span>}
+
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
               <img src={currentUser.img || "../img/noavatar.png"} alt="" />
@@ -90,34 +87,34 @@ function Navbar() {
         <>
           <hr />
           <div className="menu">
-            <Link className="link menuLink" to="/listings?cat=graphics" >
+            <Link className="link menuLink" to="/listings?cat=Graphics and Design" >
               Graphics & Design
             </Link>
-            <Link className="link menuLink" to="/listings?cat=video">
-            Video Editing
+            <Link className="link menuLink" to="/listings?cat=Video and Animation">
+            Video & Animation
             </Link>
-            <Link className="link menuLink" to="/listings?cat=writing">
-              Writing & Translation
-            </Link>
-            <Link className="link menuLink" to="/listings?cat=drawing">
+            <Link className="link menuLink" to="/listings?cat=Drawing and Illustration">
             Drawing & Illustration
 
             </Link>
-            <Link className="link menuLink" to="/listings?cat=digital">
+            <Link className="link menuLink" to="/listings?cat=Digital Painting">
             Digital Painting
             </Link>
-            <Link className="link menuLink" to="/listings?cat=photography">
+            <Link className="link menuLink" to="/listings?cat=Photography">
             Photography
             </Link>
-            <Link className="link menuLink" to="/listings?cat=print">
+            <Link className="link menuLink" to="/listings?cat=Print Design">
             Print Design
             </Link>
-            <Link className="link menuLink" to="/listings?cat=typography">
+            <Link className="link menuLink" to="/listings?cat=Typography Design">
             Typography Design
 
             </Link>
-            <Link className="link menuLink" to="/listings?cat=motion">
+            <Link className="link menuLink" to="/listings?cat=Motion Graphics">
             Motion Graphics
+            </Link>
+            <Link className="link menuLink" to="/listings?cat=3D Modeling and Rendering">
+            3D Modeling & Rendering
             </Link>
           </div>
           <hr />

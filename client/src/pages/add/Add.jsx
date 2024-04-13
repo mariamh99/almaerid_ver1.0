@@ -96,16 +96,16 @@ console.log(singleFile)
             />
             <label htmlFor="">Category</label>
             <select name="cat" id="cat" onChange={handleChange}>
-              <option value="graphics">Graphics & Design</option>
-              <option value="video">Video & Animation</option>
-              <option value="drawing">Drawing & Illustration</option>
-              <option value="digital">Digital Painting
+              <option value="Graphics and Design">Graphics and Design</option>
+              <option value="Video and Animation">Video and Animation</option>
+              <option value="Drawing and Illustration">Drawing and Illustration</option>
+              <option value="Digital Painting">Digital Painting
 </option>
-              <option value="photography">Photography</option>
-              <option value="print">Print Design</option>
-              <option value="typography">Typography Design</option>
-              <option value="motion">Motion Graphics</option>
-              <option value="3D">3D Modeling & Rendering</option>
+              <option value="Photography">Photography</option>
+              <option value="Print Design">Print Design</option>
+              <option value="Typography Design">Typography Design</option>
+              <option value="Motion Graphics">Motion Graphics</option>
+              <option value="3D Modeling and Rendering">3D Modeling and Rendering</option>
 
             </select>
             <div className="images">

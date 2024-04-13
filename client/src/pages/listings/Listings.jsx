@@ -17,16 +17,17 @@ function Listings() {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["listings"],
     queryFn: () =>
-      newRequest
+      
+        newRequest
         .get(
           `/listings${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
         )
         .then((res) => {
           return res.data;
-        }),
-  });
+        })
+      },
+  );
 
-  console.log(data);
 
   const reSort = (type) => {
     setSort(type);
@@ -44,10 +45,10 @@ function Listings() {
   return (
     <div className="listings">
       <div className="container">
-        <span className="breadcrumbs">Liverr {'>'} {search.split("=")[1]} {'>'}</span>
-        <h1>{search.split("=")[1]} Artists</h1>
+        <span className="breadcrumbs">Al Maerid {'>'} {search.split("=")[1].replaceAll("%20"," ")} {'>'}</span>
+        <h1>{search.split("=")[1].replaceAll("%20"," ")} Artists</h1>
         <p>
-          Explore the boundaries of art and technology with Liverr's AI artists
+          Explore the boundaries of art and technology with Al Maerid's AI artists
         </p>
         <div className="menu">
           <div className="left">
