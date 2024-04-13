@@ -15,7 +15,10 @@ dotenv.config();
 
 const app = express();
 console.log(process.env.CORS_URL)
-app.use(cors({ origin: process.env.CORS_URL, credentials: true }));
+app.use(cors({ origin:[
+  "http://localhost:5174",
+  "https://almaerid-ver1-0.onrender.com"
+], credentials: true }));
 app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(process.env.MONGO);

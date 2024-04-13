@@ -39,6 +39,10 @@ export const login = async (req, res, next) => {
     res
       .cookie("accessToken", token, {
         httpOnly: true,
+        magAge: 60 * 60 * 1000,
+        sameSite: 'None',
+        secure: true,
+        domain: 'https://almaerid.netlify.app'
       })
       .status(200)
       .send(info);
