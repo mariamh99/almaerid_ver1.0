@@ -90,34 +90,34 @@ function Navbar() {
         <>
           <hr />
           <div className="menu">
-            <Link className="link menuLink" to="/listings?cat=Graphics Design" >
-              Graphics Design
+            <Link className="link menuLink" to="/listings?cat=Graphics design" >
+              Graphics design
             </Link>
-            <Link className="link menuLink" to="/listings?cat=Video and Animation">
-            Video & Animation
+            <Link className="link menuLink" to="/listings?cat=Video and animation">
+            Video and animation
             </Link>
-            <Link className="link menuLink" to="/listings?cat=Drawing and Illustration">
-            Drawing & Illustration
+            <Link className="link menuLink" to="/listings?cat=Drawing and illustration">
+            Drawing and illustration
 
             </Link>
-            <Link className="link menuLink" to="/listings?cat=Digital Painting">
-            Digital Painting
+            <Link className="link menuLink" to="/listings?cat=Digital painting">
+            Digital painting
             </Link>
             <Link className="link menuLink" to="/listings?cat=Photography">
             Photography
             </Link>
-            <Link className="link menuLink" to="/listings?cat=Print Design">
-            Print Design
+            <Link className="link menuLink" to="/listings?cat=Print design">
+            Print design
             </Link>
-            <Link className="link menuLink" to="/listings?cat=Typography Design">
-            Typography Design
+            <Link className="link menuLink" to="/listings?cat=Typography design">
+            Typography design
 
             </Link>
-            <Link className="link menuLink" to="/listings?cat=Motion Graphics">
-            Motion Graphics
+            <Link className="link menuLink" to="/listings?cat=Motion graphics">
+            Motion graphics
             </Link>
-            <Link className="link menuLink" to="/listings?cat=3D Modeling and Rendering">
-            3D Modeling & Rendering
+            <Link className="link menuLink" to="/listings?cat=3D modeling and rendering">
+            3D modeling and rendering
             </Link>
           </div>
           <hr />

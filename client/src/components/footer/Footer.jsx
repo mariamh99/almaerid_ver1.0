@@ -11,38 +11,38 @@ function Footer() {
           <div className="item">
             <h2>Categories</h2>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=Graphics Design");
-            }}>Graphic & Design            </span>
+              navigate("/listings?cat=Graphics design");
+            }}>Graphic and design            </span>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=Video and Animation");
-            }}>Video & Animation
+              navigate("/listings?cat=Video and animation");
+            }}>Video and animation
             </span>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=Drawing and Illustration");
-            }}>Drawing & Illustration
+              navigate("/listings?cat=Drawing and illustration");
+            }}>Drawing and illustration
             </span>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=Digital Painting");
-            }}>Digital Painting
+              navigate("/listings?cat=Digital painting");
+            }}>Digital painting
             </span>
             <span style={{cursor:"pointer"}} onClick={()=>{
               navigate("/listings?cat=Photography");
             }}>Photography</span>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=Print Design");
-            }}>Print Design
+              navigate("/listings?cat=Print design");
+            }}>Print design
             </span>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=Typography Design");
-            }}>Typography Design
+              navigate("/listings?cat=Typography design");
+            }}>Typography design
             </span>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=Motion Graphics");
-            }}>Motion Graphics
+              navigate("/listings?cat=Motion graphics");
+            }}>Motion graphics
             </span>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=3D Modeling and Rendering");
-            }}>3D Modeling & Rendering</span>
+              navigate("/listings?cat=3D Modeling and rendering");
+            }}>3D modeling and rendering</span>
 
 
           </div>

@@ -66,7 +66,7 @@ function Home() {
           <h1>Explore the marketplace</h1>
           <div className="items">
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=Graphics Design")
+              navigate("/listings?cat=Graphics design")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/graphics-design.d32a2f8.svg"
@@ -76,7 +76,7 @@ function Home() {
               <span>Graphics design</span>
             </div>
             <div className="item"  onClick={()=>{
-              navigate("/listings?cat=Digital Painting")
+              navigate("/listings?cat=Digital painting")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/online-marketing.74e221b.svg"
@@ -87,7 +87,7 @@ function Home() {
               <span>Digital painting</span>
             </div>
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=Print Design")
+              navigate("/listings?cat=Print design")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/writing-translation.32ebe2e.svg"
@@ -97,7 +97,7 @@ function Home() {
               <span>Print design</span>
             </div>
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=Video and Animation")
+              navigate("/listings?cat=Video and animation")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/video-animation.f0d9d71.svg"
@@ -108,7 +108,7 @@ function Home() {
 </span>
             </div>
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=Music and Audio")
+              navigate("/listings?cat=Music and audio")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/music-audio.320af20.svg"
@@ -118,7 +118,7 @@ function Home() {
               <span>Music and audio</span>
             </div>
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=Motion Graphics")
+              navigate("/listings?cat=Motion graphics")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/programming.9362366.svg"
@@ -128,7 +128,7 @@ function Home() {
               <span>Motion graphics</span>
             </div>
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=Typography Design")
+              navigate("/listings?cat=Typography design")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/business.bbdf319.svg"
@@ -138,7 +138,7 @@ function Home() {
               <span>Typography design</span>
             </div>
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=3D Modeling and Rendering")
+              navigate("/listings?cat=3D Modeling and rendering")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/lifestyle.745b575.svg"
@@ -148,7 +148,7 @@ function Home() {
               <span>3D modeling and rendering</span>
             </div>
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=Drawing and Illustration")
+              navigate("/listings?cat=Drawing and illustration")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/data.718910f.svg"
