@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import upload from "../../utils/upload";
-import "./Register.scss";
+import "./MyProfile.scss";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
+import getCurrentUser from "../../utils/getCurrentUser";
 
-function Register() {
+function MyProfile() {
   const [file, setFile] = useState(null);
   const navigate = useNavigate();
-
+const userData=getCurrentUser();
   const handleChange = (e) => {
     setUser((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
@@ -21,14 +22,14 @@ function Register() {
   };
 
   const [user, setUser] = useState({
-    username: "",
-    email: "",
-    password: "",
-    img: "",
-    isSeller: false,
-    desc: "",
-    phone: "", 
+    username: userData.username,
+    email: userData.email,
+    password: userData.password,
+    isSeller: userData.isSeller,
+    desc: userData.desc,
+    phone: userData.phone,
   });
+  console.log(user)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,11 +40,19 @@ function Register() {
       formData.append("email", user.email);
       formData.append("password", user.password);
       formData.append("isSeller", user.isSeller);
+      formData.append("phone", user.phone);
       formData.append("desc", user.desc);
       formData.append("file", file);
 
-      await newRequest.post("/auth/register", formData);
-      navigate("/");
+      formData.forEach((value, key) => {
+        console.log(`${key}: ${value}`);
+      });
+      await newRequest.post("/auth/edit", formData).then(async (res)=>{
+        await newRequest.post("/auth/logout");
+        localStorage.setItem("currentUser", null);
+        navigate("/");
+      });
+  
     } catch (err) {
       console.log(err);
       setError(err.response.data.message);
@@ -53,32 +62,33 @@ function Register() {
   const [error, setError] = useState();
 
   return (
-    <div className="register">
+    <div className="myProfile">
       <form onSubmit={handleSubmit}>
         <div className="left">
-          <h1>Create a new account</h1>
+          <h1>Edit your accoutn</h1>
           <label htmlFor="">Username</label>
-          <input name="username" type="text" onChange={handleChange} />
+          <input name="username" type="text" value={user.username} onChange={handleChange} />
           <label htmlFor="">Email</label>
           <input
             name="email"
             type="email"
+            value={user.email}
             placeholder="email"
             onChange={handleChange}
           />
           <label htmlFor="">Password</label>
-          <input name="password" type="password" onChange={handleChange} />
+          <input name="password" value={user.password} type="password" onChange={handleChange} />
           <label htmlFor="">Profile Picture</label>
           <input type="file" onChange={(e) => setFile(e.target.files[0])} />
           {error && <span style={{ color: "red" }}>{error}</span>}
-          <button type="submit">Register</button>
+          <button type="submit">MyProfile</button>
         </div>
         <div className="right">
-          <h1>I want to become a seller</h1>
+          <h1>Become a seller</h1>
           <div className="toggle">
             <label htmlFor="">Activate the seller account</label>
             <label className="switch">
-              <input type="checkbox" onChange={handleSeller} />
+            <input type="checkbox" onChange={handleSeller} checked={user.isSeller ? true : false} />
               <span className="slider round"></span>
             </label>
           </div>
@@ -99,6 +109,7 @@ function Register() {
             placeholder="A short description of yourself"
             name="desc"
             id=""
+            value={user.desc}
             cols="30"
             rows="10"
             onChange={handleChange}
@@ -109,4 +120,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default MyProfile;

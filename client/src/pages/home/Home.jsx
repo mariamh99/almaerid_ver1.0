@@ -66,17 +66,17 @@ function Home() {
           <h1>Explore the marketplace</h1>
           <div className="items">
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=graphics")
+              navigate("/listings?cat=Graphics Design")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/graphics-design.d32a2f8.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Graphics Design</span>
+              <span>Graphics design</span>
             </div>
             <div className="item"  onClick={()=>{
-              navigate("/listings?cat=digital")
+              navigate("/listings?cat=Digital Painting")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/online-marketing.74e221b.svg"
@@ -84,88 +84,88 @@ function Home() {
               />
               <div className="line"></div>
 
-              <span>Digital Painting</span>
+              <span>Digital painting</span>
             </div>
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=print")
+              navigate("/listings?cat=Print Design")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/writing-translation.32ebe2e.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Print Design</span>
+              <span>Print design</span>
             </div>
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=video")
+              navigate("/listings?cat=Video and Animation")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/video-animation.f0d9d71.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Video Editing
+              <span>Video editing
 </span>
             </div>
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=music")
+              navigate("/listings?cat=Music and Audio")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/music-audio.320af20.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Music & Audio</span>
+              <span>Music and audio</span>
             </div>
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=motion")
+              navigate("/listings?cat=Motion Graphics")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/programming.9362366.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Motion Graphics</span>
+              <span>Motion graphics</span>
             </div>
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=typography")
+              navigate("/listings?cat=Typography Design")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/business.bbdf319.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Typography Design</span>
+              <span>Typography design</span>
             </div>
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=3d")
+              navigate("/listings?cat=3D Modeling and Rendering")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/lifestyle.745b575.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>3D Modeling & Rendering</span>
+              <span>3D modeling and rendering</span>
             </div>
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=drawing")
+              navigate("/listings?cat=Drawing and Illustration")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/data.718910f.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Drawing & Illustration</span>
+              <span>Drawing adn illustration</span>
             </div>
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=photography")
+              navigate("/listings?cat=Photography")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/photography.01cf943.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Photography</span>
+              <span>photography</span>
             </div>
           </div>
         </div>

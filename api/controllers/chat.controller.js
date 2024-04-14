@@ -4,12 +4,14 @@ import User from "../models/user.model.js";
 
 export const createChat = async (req, res, next) => {
   const seller= await User.findOne({_id:req.body.to});
+const buyer=await User.findOne({_id:req.userId})
+
   const newChat = new Chat({
-    id: req.body.isSeller ? req.userId + req.body.to : req.body.to + req.userId,
-    sellerId: req.body.isSeller ? req.userId : req.body.to,
+    id: req.body.to + req.userId,
+    sellerId: req.body.to,
     sellerName:seller.username,
-    buyerName:req.body.buyerName,
-    buyerId: req.body.isSeller ? req.body.to : req.userId,
+    buyerName:buyer.username,
+    buyerId: req.body.to,
     readBySeller: req.body.isSeller,
     readByBuyer: !req.body.isSeller,
   });

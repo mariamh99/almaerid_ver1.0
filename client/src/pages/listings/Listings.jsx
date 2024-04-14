@@ -46,15 +46,18 @@ function Listings() {
     <div className="listings">
       <div className="container">
         <span className="breadcrumbs">Al Maerid {'>'} {search.split("=")[1].replaceAll("%20"," ")} {'>'}</span>
-        <h1>{search.split("=")[1].replaceAll("%20"," ")} Artists</h1>
+        <h1>{search.split("=")[1].replaceAll("%20"," ")}</h1>
 
         <div className="menu">
-          <div className="left">
-            <span>Budget</span>
-            <input ref={minRef} type="number" placeholder="min" />
-            <input ref={maxRef} type="number" placeholder="max" />
-            <button onClick={apply}>Apply</button>
-          </div>
+        <div className="left">
+  <span>Price</span>
+  <input ref={minRef} type="number" placeholder="min" />
+  <span>$</span>
+  <input ref={maxRef} type="number" placeholder="max" />
+  <span>$</span>
+
+  <button onClick={apply}>Apply</button>
+</div>
           <div className="right">
             <span className="sortBy">Sort by</span>
             <span className="sortType">

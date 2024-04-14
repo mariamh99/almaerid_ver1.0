@@ -11,7 +11,7 @@ function Footer() {
           <div className="item">
             <h2>Categories</h2>
             <span style={{cursor:"pointer"}} onClick={()=>{
-              navigate("/listings?cat=Graphics and Design");
+              navigate("/listings?cat=Graphics Design");
             }}>Graphic & Design            </span>
             <span style={{cursor:"pointer"}} onClick={()=>{
               navigate("/listings?cat=Video and Animation");

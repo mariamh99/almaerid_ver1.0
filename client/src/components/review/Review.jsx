@@ -25,9 +25,6 @@ const Review = ({ review }) => {
           <img className="pp" src={data.img || "/img/noavatar.jpg"} alt="" />
           <div className="info">
             <span>{data.username}</span>
-            <div className="country">
-              <span>{data.country}</span>
-            </div>
           </div>
         </div>
       )}

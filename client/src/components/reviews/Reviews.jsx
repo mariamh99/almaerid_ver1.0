@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import newRequest from "../../utils/newRequest";
 import Review from "../review/Review";
 import "./Reviews.scss";
@@ -30,7 +30,17 @@ const user=getCurrentUser();
     const star = e.target[1].value;
     mutation.mutate({ listingId, desc, star });
   };
+  const [canReview,setCanReview]=useState(true)
 
+  useEffect(()=>{
+    newRequest.post("/reviews/check",{
+      "userId":user._id,
+      "listingId":listingId
+    }).then((res)=>{
+      setCanReview(true)
+    }).catch((err)=>{     setCanReview(false)
+    });
+  },[])
   return (
     <div className="reviews">
       <h2>Reviews</h2>
@@ -41,7 +51,7 @@ const user=getCurrentUser();
         : data.map((review) => <Review key={review._id} review={review} />)}
       <div className="add">
         <h3>Add a review</h3>
-        {user._id && !user.isSeller ? (<form action="" className="addForm" onSubmit={handleSubmit}>
+        {user._id && !user.isSeller ? !canReview?<span>You can't create a review for a listing you didn't purchase!</span>: (<form action="" className="addForm" onSubmit={handleSubmit}>
           <input type="text" placeholder="write your opinion" />
           <select name="" id="">
             <option value={1}>1</option>
@@ -51,7 +61,7 @@ const user=getCurrentUser();
             <option value={5}>5</option>
           </select>
           <button>Send</button>
-        </form>):<span>Login as a Buyer in order to add review</span>}
+        </form>):<span>Login as a buyer in order to add review</span>}
         
       </div>
     </div>

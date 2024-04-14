@@ -17,7 +17,7 @@ function Login() {
       localStorage.setItem("currentUser", JSON.stringify(res.data));
       navigate("/")
     } catch (err) {
-      setError(err.response.data);
+      setError(err.response.data.message);
     }
   };
 
@@ -29,7 +29,6 @@ function Login() {
         <input
           name="username"
           type="text"
-          placeholder="johndoe"
           onChange={(e) => setUsername(e.target.value)}
         />
 
@@ -40,7 +39,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
-        {error && error}
+        {error && <span style={{color:"red",fontSize:16}}>{error}</span>}
       </form>
     </div>
   );

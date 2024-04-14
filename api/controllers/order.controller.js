@@ -1,12 +1,13 @@
 import createError from "../utils/createError.js";
 import Order from "../models/order.model.js";
 import Listing from "../models/listing.model.js";
-import Stripe from "stripe";
 export const intent = async (req, res, next) => {
 
   const listing = await Listing.findById(req.params.id);
 
 
+  listing.sales=listing.sales+1;
+  await listing.save();
   const newOrder = new Order({
     listingId: listing._id,
     img: listing.cover,

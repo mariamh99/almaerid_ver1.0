@@ -42,6 +42,24 @@ export const createReview = async (req, res, next) => {
   }
 };
 
+export const checkPurchase = async (req, res, next) => {
+
+  try {
+
+    const didPurchase = await didUserPurchaseListing(req.userId, req.body.listingId);
+    if (!didPurchase)
+      return next(
+        createError(403, "You can't create a review for a listing you didn't purchase!")
+      );
+
+          res.status(200).send(didPurchase);
+  } catch (err) {
+    next(err);
+  }
+};
+
+
+
 export const getReviews = async (req, res, next) => {
   try {
     const reviews = await Review.find({ listingId: req.params.listingId });

@@ -83,6 +83,8 @@ const navigate=useNavigate();
       .render(paypal.current);
   }
 
+
+
   return (
     <div className="listing">
       {isLoading ? (
@@ -148,21 +150,21 @@ const navigate=useNavigate();
                         </span>
                       </div>
                     )}
-                    <button
-                      onClick={() => {
-                        handleContactMeButton(data.userId);
-                      }}
-                    >
-                      Contact Me
-                    </button>
+                    {
+userId!==currentUser._id&& !currentUser.isSeller&&
+                      (<button
+                        onClick={() => {
+                          handleContactMeButton(data.userId);
+                        }}
+                      >
+                        Contact Me
+                      </button>)
+                    }
                   </div>
                 </div>
                 <div className="box">
                   <div className="items">
-                    <div className="item">
-                      <span className="title">From</span>
-                      <span className="desc">{dataUser.country}</span>
-                    </div>
+
                     <div className="item">
                       <span className="title">Member since</span>
                       <span className="desc">Aug 2022</span>
@@ -196,7 +198,7 @@ const navigate=useNavigate();
             <div className="details">
               <div className="item">
                 <img src="/img/clock.png" alt="" />
-                <span>{data.deliveryDate} Days Delivery</span>
+                <span>{data.deliveryTime} Days Delivery</span>
               </div>
               <div className="item">
                 <img src="/img/recycle.png" alt="" />
@@ -211,7 +213,7 @@ const navigate=useNavigate();
                 </div>
               ))}
             </div>
-{checkout && <button onClick={()=>{
+{checkout &&  userId!==currentUser._id&&!currentUser.isSeller&& <button onClick={()=>{
   handleCheckoutButton(data._id,data.price)
 }}>Continue</button>}
             <div ref={paypal} id="paypal"></div>

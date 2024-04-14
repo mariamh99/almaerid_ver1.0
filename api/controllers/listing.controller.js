@@ -9,10 +9,11 @@ export const createListing = async (req, res, next) => {
   if (!cover) {
     return res.status(400).json({ message: "No cover image uploaded!" });
   }
-
+console.log(req.body)
   const newListing = new Listing({
-    userId: req.userId,
     ...req.body,
+
+    userId: req.body.userId[1],
     cover: cover.path,
   });
   try {
@@ -45,6 +46,7 @@ export const getListing = async (req, res, next) => {
 };
 export const getListings = async (req, res, next) => {
   const q = req.query;
+  console.log(q)
   const filters = {
     ...(q.userId && { userId: q.userId }),
     ...(q.cat && { cat: q.cat }),

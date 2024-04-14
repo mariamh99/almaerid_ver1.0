@@ -67,6 +67,9 @@ function Navbar() {
                   <Link className="link" to="/messages">
                     Messages
                   </Link>
+                  <Link className="link" to="/myprofile">
+                    My profile
+                  </Link>
                   <Link className="link" onClick={handleLogout}>
                     Logout
                   </Link>
@@ -87,8 +90,8 @@ function Navbar() {
         <>
           <hr />
           <div className="menu">
-            <Link className="link menuLink" to="/listings?cat=Graphics and Design" >
-              Graphics & Design
+            <Link className="link menuLink" to="/listings?cat=Graphics Design" >
+              Graphics Design
             </Link>
             <Link className="link menuLink" to="/listings?cat=Video and Animation">
             Video & Animation

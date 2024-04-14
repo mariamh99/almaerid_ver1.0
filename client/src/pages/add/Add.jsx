@@ -1,10 +1,11 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import "./Add.scss";
 import { listingReducer, INITIAL_STATE } from "../../reducers/listingReducer";
 import upload from "../../utils/upload";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
+import getCurrentUser from "../../utils/getCurrentUser";
 
 const Add = () => {
   const [singleFile, setSingleFile] = useState(undefined);
@@ -49,7 +50,7 @@ const Add = () => {
   const navigate = useNavigate();
 
   const queryClient = useQueryClient();
-
+const userData=getCurrentUser()
   const mutation = useMutation({
     mutationFn: (listing) => {
       return newRequest.post("/listings", listing);
@@ -68,6 +69,7 @@ const Add = () => {
       }
   }
   formData.append("file",singleFile)
+  formData.append("userId",userData._id)
 
     
     newRequest.post("/listings",formData).then((res)=>{
@@ -77,6 +79,13 @@ const Add = () => {
     
     // navigate("/mylistings")
   };
+
+useEffect(()=>{
+  dispatch({
+    type: "CHANGE_INPUT",
+    payload: { name: "cat", value: "Graphics Design" },
+  });
+},[])
 
   return (
     <div className="add">
@@ -93,16 +102,16 @@ const Add = () => {
             />
             <label htmlFor="">Category</label>
             <select name="cat" id="cat" onChange={handleChange}>
-              <option value="Graphics and Design">Graphics and Design</option>
-              <option value="Video and Animation">Video and Animation</option>
-              <option value="Drawing and Illustration">Drawing and Illustration</option>
-              <option value="Digital Painting">Digital Painting
+              <option value="Graphics design">Graphics design</option>
+              <option value="Video and animation">Video and animation</option>
+              <option value="Drawing and illustration">Drawing and illustration</option>
+              <option value="Digital painting">Digital painting
 </option>
               <option value="Photography">Photography</option>
-              <option value="Print Design">Print Design</option>
-              <option value="Typography Design">Typography Design</option>
-              <option value="Motion Graphics">Motion Graphics</option>
-              <option value="3D Modeling and Rendering">3D Modeling and Rendering</option>
+              <option value="Print design">Print design</option>
+              <option value="Typography design">Typography design</option>
+              <option value="Motion graphics">Motion graphics</option>
+              <option value="3D modeling and rendering">3D modeling and rendering</option>
 
             </select>
             <div className="images">
@@ -112,7 +121,7 @@ const Add = () => {
                   type="file"
                   onChange={(e) => setSingleFile(e.target.files[0])}
                 />
-                <label htmlFor="">Upload Images</label>
+                {/* <label htmlFor="">Upload images</label>
                 <input
                   type="file"
                   multiple
@@ -120,7 +129,7 @@ const Add = () => {
                     const filesArray = Array.from(e.target.files); // Convert FileList to array
                     setFiles(filesArray); // Update state with array of files
                   }}
-                />
+                /> */}
               </div>
               
             </div>
