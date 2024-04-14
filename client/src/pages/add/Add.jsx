@@ -83,7 +83,7 @@ const userData=getCurrentUser()
 useEffect(()=>{
   dispatch({
     type: "CHANGE_INPUT",
-    payload: { name: "cat", value: "Graphics Design" },
+    payload: { name: "cat", value: "Graphic Design" },
   });
 },[])
 
@@ -102,7 +102,7 @@ useEffect(()=>{
             />
             <label htmlFor="">Category</label>
             <select name="cat" id="cat" onChange={handleChange}>
-              <option value="Graphics design">Graphics design</option>
+              <option value="Graphic Design">Graphic Design</option>
               <option value="Video and animation">Video and animation</option>
               <option value="Drawing and illustration">Drawing and illustration</option>
               <option value="Digital painting">Digital painting

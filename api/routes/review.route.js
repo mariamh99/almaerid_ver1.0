@@ -10,7 +10,7 @@ import {
 const router = express.Router();
 
 router.post("/", verifyToken, createReview )
-router.get("/:chatId", getReviews )
+router.get("/:listingId", getReviews )
 router.delete("/:id", deleteReview)
 router.post("/check", verifyToken, checkPurchase)
 

@@ -66,14 +66,14 @@ function Home() {
           <h1>Explore the marketplace</h1>
           <div className="items">
             <div className="item" onClick={()=>{
-              navigate("/listings?cat=Graphics design")
+              navigate("/listings?cat=Graphic Design")
             }}>
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/graphics-design.d32a2f8.svg"
                 alt=""
               />
               <div className="line"></div>
-              <span>Graphics design</span>
+              <span>Graphic Design</span>
             </div>
             <div className="item"  onClick={()=>{
               navigate("/listings?cat=Digital painting")

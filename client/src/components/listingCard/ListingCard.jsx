@@ -27,7 +27,8 @@ const ListingCard = ({ item }) => {
               <span>{data.username}</span>
             </div>
           )}
-          <p>{item.desc}</p>
+                      <p style={{textOverflow:"ellipsis",maxLines:1}}>{item.desc}</p>
+
           <div className="star">
             <img src="./img/star.png" alt="" />
             <span>

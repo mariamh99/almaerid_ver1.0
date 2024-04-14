@@ -34,7 +34,9 @@ const navigate=useNavigate();
     enabled: !!userId,
   });
 
-  const handleContactMeButton = (toParam, sellerNameParam) => {
+  const handleContactMeButton = (toParam) => {
+    console.log(toParam);
+    console.log(currentUser.isSeller)
     newRequest
       .post("/chats", {
         isSeller: currentUser.isSeller,
@@ -67,7 +69,6 @@ const navigate=useNavigate();
         },
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
-          console.log(order)
           newRequest.post(`/orders/create-payment-intent/${listingId}`,{
             clientSecret:order.id
           }).then((res)=>{
@@ -150,7 +151,7 @@ const navigate=useNavigate();
                         </span>
                       </div>
                     )}
-                    {
+                    {currentUser&&
 userId!==currentUser._id&& !currentUser.isSeller&&
                       (<button
                         onClick={() => {
@@ -213,7 +214,7 @@ userId!==currentUser._id&& !currentUser.isSeller&&
                 </div>
               ))}
             </div>
-{checkout &&  userId!==currentUser._id&&!currentUser.isSeller&& <button onClick={()=>{
+{checkout && currentUser&& userId!==currentUser._id&&!currentUser.isSeller&& <button onClick={()=>{
   handleCheckoutButton(data._id,data.price)
 }}>Continue</button>}
             <div ref={paypal} id="paypal"></div>

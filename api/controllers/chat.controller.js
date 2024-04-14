@@ -11,7 +11,7 @@ const buyer=await User.findOne({_id:req.userId})
     sellerId: req.body.to,
     sellerName:seller.username,
     buyerName:buyer.username,
-    buyerId: req.body.to,
+    buyerId: req.userId,
     readBySeller: req.body.isSeller,
     readByBuyer: !req.body.isSeller,
   });

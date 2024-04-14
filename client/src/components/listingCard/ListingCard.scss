@@ -34,6 +34,12 @@
       }
   
       p {
+        /* Ensure text overflow and maximum lines */
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* Limit to 2 lines */
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
         color: #111;
       }
   

@@ -15,9 +15,12 @@ const user=getCurrentUser();
       }),
   });
 
+  const [feedback,setFeedback]=useState("");
   const mutation = useMutation({
     mutationFn: (review) => {
-      return newRequest.post("/reviews", review);
+      return newRequest.post("/reviews", review).then((res)=>{
+        setFeedback("Added feedback")
+      });
     },
     onSuccess:()=>{
       queryClient.invalidateQueries(["reviews"])
@@ -33,13 +36,16 @@ const user=getCurrentUser();
   const [canReview,setCanReview]=useState(true)
 
   useEffect(()=>{
-    newRequest.post("/reviews/check",{
-      "userId":user._id,
-      "listingId":listingId
-    }).then((res)=>{
-      setCanReview(true)
-    }).catch((err)=>{     setCanReview(false)
-    });
+    if(user){
+      newRequest.post("/reviews/check",{
+        "userId":user._id,
+        "listingId":listingId
+      }).then((res)=>{
+        setCanReview(true)
+      }).catch((err)=>{     setCanReview(false)
+      });
+    }
+   
   },[])
   return (
     <div className="reviews">
@@ -51,7 +57,7 @@ const user=getCurrentUser();
         : data.map((review) => <Review key={review._id} review={review} />)}
       <div className="add">
         <h3>Add a review</h3>
-        {user._id && !user.isSeller ? !canReview?<span>You can't create a review for a listing you didn't purchase!</span>: (<form action="" className="addForm" onSubmit={handleSubmit}>
+        {user && user._id && !user.isSeller ? !canReview?<span>You can't create a review for a listing you didn't purchase!</span>: (<form action="" className="addForm" onSubmit={handleSubmit}>
           <input type="text" placeholder="write your opinion" />
           <select name="" id="">
             <option value={1}>1</option>
@@ -62,7 +68,7 @@ const user=getCurrentUser();
           </select>
           <button>Send</button>
         </form>):<span>Login as a buyer in order to add review</span>}
-        
+        {feedback}
       </div>
     </div>
   );

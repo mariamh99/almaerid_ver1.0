@@ -63,7 +63,6 @@ function Register() {
           <input
             name="email"
             type="email"
-            placeholder="email"
             onChange={handleChange}
           />
           <label htmlFor="">Password</label>
@@ -96,7 +95,6 @@ function Register() {
          
           <label htmlFor="">Description</label>
           <textarea
-            placeholder="A short description of yourself"
             name="desc"
             id=""
             cols="30"

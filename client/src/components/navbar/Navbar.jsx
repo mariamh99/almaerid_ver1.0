@@ -90,8 +90,8 @@ function Navbar() {
         <>
           <hr />
           <div className="menu">
-            <Link className="link menuLink" to="/listings?cat=Graphics design" >
-              Graphics design
+            <Link className="link menuLink" to="/listings?cat=Graphic Design" >
+              Graphic Design
             </Link>
             <Link className="link menuLink" to="/listings?cat=Video and animation">
             Video and animation

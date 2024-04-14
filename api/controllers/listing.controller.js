@@ -52,8 +52,8 @@ export const getListings = async (req, res, next) => {
     ...(q.cat && { cat: q.cat }),
     ...((q.min || q.max) && {
       price: {
-        ...(q.min && { $gt: q.min }),
-        ...(q.max && { $lt: q.max }),
+        ...(q.min && { $gte: q.min }),
+        ...(q.max && { $lte: q.max }),
       },
     }),
     ...(q.search && { title: { $regex: q.search, $options: "i" } }),
